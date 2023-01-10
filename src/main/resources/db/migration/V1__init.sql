@@ -1,9 +1,10 @@
-# docker run --name mapping_news_data -p 5433:5432 -e POSTGRES_USER=user -e POSTGRES_PASSWORD=qwerty -e POSTGRES_DB=mapping_news_data_database -d postgres:14
-
+drop table if exists news;
+drop table if exists sources;
+drop table if exists topics;
 create table sources
 (
     id          SERIAL PRIMARY KEY,
-    text      CHARACTER VARYING(255)
+    text      CHARACTER VARYING(255) NOT NULL
 );
 
 insert into sources (text)
@@ -13,7 +14,7 @@ values ('irbis.plus'),
 create table topics
 (
     id          SERIAL PRIMARY KEY,
-    name      CHARACTER VARYING(255)
+    name      CHARACTER VARYING(255) NOT NULL
 );
 
 insert into topics (name)
@@ -27,7 +28,7 @@ create table news
     id          SERIAL PRIMARY KEY,
     source_id INTEGER,
     topic_id INTEGER,
-    content      CHARACTER VARYING(65535),
+    content      CHARACTER VARYING(65535) NOT NULL,
     FOREIGN KEY (source_id) REFERENCES sources(id) ON DELETE SET NULL,
     FOREIGN KEY (topic_id) REFERENCES topics(id) ON DELETE SET NULL
 );
