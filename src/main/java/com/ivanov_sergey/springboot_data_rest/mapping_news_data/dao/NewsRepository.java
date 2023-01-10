@@ -9,6 +9,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface NewsRepository extends JpaRepository<News, Integer> {
-    public List<News> findAllBySourceContains(String sourceText);
-    public List<News> findAllByTopicContains(String topicName);
+    public List<News> findNewsBySourceText(String sourceText);
+    public List<News> findNewsByTopicName(String topicName);
 }

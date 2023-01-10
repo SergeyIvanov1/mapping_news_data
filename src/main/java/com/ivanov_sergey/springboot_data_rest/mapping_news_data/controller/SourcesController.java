@@ -1,7 +1,9 @@
 package com.ivanov_sergey.springboot_data_rest.mapping_news_data.controller;
 
 import com.ivanov_sergey.springboot_data_rest.mapping_news_data.dao.NewsRepository;
+import com.ivanov_sergey.springboot_data_rest.mapping_news_data.dao.SourceRepository;
 import com.ivanov_sergey.springboot_data_rest.mapping_news_data.entity.News;
+import com.ivanov_sergey.springboot_data_rest.mapping_news_data.entity.Source;
 import com.ivanov_sergey.springboot_data_rest.mapping_news_data.exception_handling.EntityIncorrectData;
 import com.ivanov_sergey.springboot_data_rest.mapping_news_data.exception_handling.NoSuchEntityException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,29 +18,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/")
-public class RESTController {
+public class SourcesController {
 
     @Autowired
-    private NewsRepository newsRepository;
+    private SourceRepository sourceRepository;
 
-    @GetMapping("/news")
-    public List<News> getCountAnimalsByRule(){
-        return newsRepository.findAll();
-    }
-
-    @ExceptionHandler
-    public ResponseEntity<EntityIncorrectData> handleException(NoSuchEntityException exception){
-        EntityIncorrectData data = new EntityIncorrectData();
-        data.setInfo(exception.getMessage());
-
-        return new ResponseEntity<>(data, HttpStatus.NOT_FOUND);
-    }
-
-    @ExceptionHandler
-    public ResponseEntity<EntityIncorrectData> handleException(RuntimeException exception){
-        EntityIncorrectData data = new EntityIncorrectData();
-        data.setInfo(exception.getMessage());
-
-        return new ResponseEntity<>(data, HttpStatus.BAD_REQUEST);
+    @GetMapping("/sources")
+    public List<Source> getCountAnimalsByRule(){
+        return sourceRepository.findAll();
     }
 }

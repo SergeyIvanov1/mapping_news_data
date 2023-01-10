@@ -14,12 +14,12 @@ public class NewsServiceImpl implements NewsService {
     private final NewsRepository newsRepository;
 
     @Override
-    public List<News> showNewsBySource(String sourceText) {
-        return newsRepository.findAllBySourceContains(sourceText);
+    public List<News> findNewsBySourceText(String sourceText) {
+        return newsRepository.findNewsBySourceText(sourceText);
     }
 
     @Override
-    public List<News> showNewsByTopic(String topicName) {
-        return newsRepository.findAllByTopicContains(topicName);
+    public List<News> findNewsByTopicName(String topicName) {
+        return newsRepository.findNewsByTopicName(topicName);
     }
 }

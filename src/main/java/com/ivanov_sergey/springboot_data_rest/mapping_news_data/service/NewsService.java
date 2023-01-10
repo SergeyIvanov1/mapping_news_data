@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface NewsService {
 
-    List<News> showNewsBySource(String sourceText);
+    List<News> findNewsBySourceText(String sourceText);
 
-    List<News> showNewsByTopic(String topicName);
+    List<News> findNewsByTopicName(String topicName);
 }
