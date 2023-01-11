@@ -2,14 +2,15 @@ package com.ivanov_sergey.springboot_data_rest.mapping_news_data.controller;
 
 import com.ivanov_sergey.springboot_data_rest.mapping_news_data.dao.NewsRepository;
 import com.ivanov_sergey.springboot_data_rest.mapping_news_data.entity.News;
-import com.ivanov_sergey.springboot_data_rest.mapping_news_data.exception_handling.EntityIncorrectData;
-import com.ivanov_sergey.springboot_data_rest.mapping_news_data.exception_handling.NoSuchEntityException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/")
@@ -19,17 +20,22 @@ public class NewsController {
     private NewsRepository newsRepository;
 
     @GetMapping("/news")
-    public List<News> getCountAnimalsByRule(){
-        return newsRepository.findAll();
+    public Page<News> showAllNews(@PageableDefault(sort = { "id"},
+            direction = Sort.Direction.DESC)Pageable pageable){
+        return newsRepository.findAll(pageable);
     }
 
     @GetMapping("/news/source/{source}")
-    public List<News> findNewsBySourceText(@PathVariable String source){
-        return newsRepository.findNewsBySourceText(source);
+    public Page<News> showNewsBySourceText(@PathVariable String source,
+                                           @PageableDefault(sort = { "id"},
+                                                   direction = Sort.Direction.DESC)Pageable pageable){
+        return newsRepository.findNewsBySourceText(source, pageable);
     }
 
     @GetMapping("/news/topic/{topic}")
-    public List<News> findNewsByTopicName(@PathVariable String topic){
-        return newsRepository.findNewsByTopicName(topic);
+    public Page<News> showNewsByTopicName(@PathVariable String topic,
+                                          @PageableDefault(sort = { "id"},
+                                                  direction = Sort.Direction.DESC)Pageable pageable){
+        return newsRepository.findNewsByTopicName(topic, pageable);
     }
 }

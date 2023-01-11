@@ -2,13 +2,13 @@ package com.ivanov_sergey.springboot_data_rest.mapping_news_data.dao;
 
 
 import com.ivanov_sergey.springboot_data_rest.mapping_news_data.entity.News;
-import com.ivanov_sergey.springboot_data_rest.mapping_news_data.entity.Source;
-import com.ivanov_sergey.springboot_data_rest.mapping_news_data.entity.Topic;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
-
 public interface NewsRepository extends JpaRepository<News, Integer> {
-    public List<News> findNewsBySourceText(String sourceText);
-    public List<News> findNewsByTopicName(String topicName);
+
+    public Page<News> findAll(Pageable pageable);
+    public Page<News> findNewsBySourceText(String sourceText, Pageable pageable);
+    public Page<News> findNewsByTopicName(String topicName, Pageable pageable);
 }

@@ -2,7 +2,6 @@ package com.ivanov_sergey.springboot_data_rest.mapping_news_data.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.Hibernate;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -10,7 +9,6 @@ import java.util.Objects;
 @Getter
 @Setter
 @ToString
-//@RequiredArgsConstructor
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -21,6 +19,20 @@ public class Source implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
+
     @Column(name = "text")
     private String text;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Source source = (Source) o;
+        return id == source.id && Objects.equals(text, source.text);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, text);
+    }
 }
