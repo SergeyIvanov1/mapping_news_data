@@ -1,6 +1,6 @@
-package com.ivanov_sergey.springboot_data_rest.mapping_news_data.entity;
+package com.ivanov_sergey.springboot_data_rest.mapping_news_data.model;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;

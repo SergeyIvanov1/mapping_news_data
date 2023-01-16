@@ -1,7 +1,7 @@
-package com.ivanov_sergey.springboot_data_rest.mapping_news_data.dao;
+package com.ivanov_sergey.springboot_data_rest.mapping_news_data.repository;
 
 
-import com.ivanov_sergey.springboot_data_rest.mapping_news_data.entity.News;
+import com.ivanov_sergey.springboot_data_rest.mapping_news_data.model.News;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

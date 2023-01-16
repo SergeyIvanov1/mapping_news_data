@@ -1,7 +1,8 @@
-package com.ivanov_sergey.springboot_data_rest.mapping_news_data.service;
+package com.ivanov_sergey.springboot_data_rest.mapping_news_data.service.impl;
 
-import com.ivanov_sergey.springboot_data_rest.mapping_news_data.dao.NewsRepository;
-import com.ivanov_sergey.springboot_data_rest.mapping_news_data.entity.News;
+import com.ivanov_sergey.springboot_data_rest.mapping_news_data.repository.NewsRepository;
+import com.ivanov_sergey.springboot_data_rest.mapping_news_data.model.News;
+import com.ivanov_sergey.springboot_data_rest.mapping_news_data.service.NewsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

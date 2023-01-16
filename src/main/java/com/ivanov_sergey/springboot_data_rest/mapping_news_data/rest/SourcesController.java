@@ -1,7 +1,7 @@
-package com.ivanov_sergey.springboot_data_rest.mapping_news_data.controller;
+package com.ivanov_sergey.springboot_data_rest.mapping_news_data.rest;
 
-import com.ivanov_sergey.springboot_data_rest.mapping_news_data.dao.SourceRepository;
-import com.ivanov_sergey.springboot_data_rest.mapping_news_data.entity.Source;
+import com.ivanov_sergey.springboot_data_rest.mapping_news_data.repository.SourceRepository;
+import com.ivanov_sergey.springboot_data_rest.mapping_news_data.model.Source;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
